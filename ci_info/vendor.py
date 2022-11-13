@@ -46,6 +46,9 @@ class VendorName(str, enum.Enum):
     APPCENTER = "Visual Studio App Center"
     XCODE_CLOUD = "Xcode Cloud"
     XCODE_SERVER = "Xcode Server"
+    HEROKU = "Heroku"
+    GOOGLE_CLOUD_BUILD = "Google Cloud Build"
+    GERRIT = "Gerrit"
 
 
 class Vendor(NamedTuple):

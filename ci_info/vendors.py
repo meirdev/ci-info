@@ -1,4 +1,4 @@
-from .env import EnvExists, EnvEqual, EnvAll, EnvAny, EnvNotEqual
+from .env import EnvAll, EnvAny, EnvEqual, EnvExists, EnvIncludes, EnvNotEqual
 from .vendor import Vendor, VendorName
 
 # https://raw.githubusercontent.com/watson/ci-info/master/vendors.json
@@ -205,7 +205,10 @@ VENDORS: list[Vendor] = [
     ),
     Vendor(
         name=VendorName.VERCEL,
-        env=EnvExists("NOW_BUILDER"),
+        env=EnvAny(
+            EnvExists("NOW_BUILDER"),
+            EnvExists("VERCEL_URL"),
+        ),
     ),
     Vendor(
         name=VendorName.APPCENTER,
@@ -219,5 +222,17 @@ VENDORS: list[Vendor] = [
     Vendor(
         name=VendorName.XCODE_SERVER,
         env=EnvExists("XCS"),
+    ),
+    Vendor(
+        name=VendorName.HEROKU,
+        env=EnvIncludes("NODE", "/app/.heroku/node/bin/node"),
+    ),
+    Vendor(
+        name=VendorName.GOOGLE_CLOUD_BUILD,
+        env=EnvExists("BUILDER_OUTPUT"),
+    ),
+    Vendor(
+        name=VendorName.GERRIT,
+        env=EnvExists("GERRIT_PROJECT"),
     ),
 ]

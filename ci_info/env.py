@@ -35,6 +35,15 @@ class EnvNotEqual(EnvEqual):
         return not super().__bool__()
 
 
+class EnvIncludes(Env):
+    def __init__(self, key: str, value: str) -> None:
+        self.key = key
+        self.value = value
+
+    def __bool__(self) -> bool:
+        return self.value in os.environ.get(self.key, "")
+
+
 class EnvList:
     def __init__(self, *env: Env) -> None:
         self.env = env

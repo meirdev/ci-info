@@ -26,6 +26,12 @@ def test_env_not_equal():
     assert env.EnvNotEqual("CI_INFO_TEST", "no")
 
 
+@mock.patch.dict(os.environ, {"CI_INFO_TEST": "one two three"})
+def test_env_includes():
+    assert env.EnvIncludes("CI_INFO_TEST", "one")
+    assert not env.EnvIncludes("CI_INFO_TEST", "four")
+
+
 @mock.patch.dict(os.environ, {
     "CI_INFO_TEST1": "true",
     "CI_INFO_TEST2": "no",

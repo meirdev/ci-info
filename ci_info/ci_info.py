@@ -23,10 +23,12 @@ def is_ci() -> bool:
     if EnvAny(
         EnvExists("CI"),
         EnvExists("CONTINUOUS_INTEGRATION"),
+        EnvExists("BUILD_ID"),
         EnvExists("BUILD_NUMBER"),
         EnvExists("CI_APP_ID"),
         EnvExists("CI_BUILD_ID"),
         EnvExists("CI_BUILD_NUMBER"),
+        EnvExists("CI_NAME"),
         EnvExists("RUN_ID"),
     ):
         return True
