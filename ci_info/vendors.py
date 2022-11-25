@@ -235,4 +235,12 @@ VENDORS: list[Vendor] = [
         name=VendorName.GERRIT,
         env=EnvExists("GERRIT_PROJECT"),
     ),
+    Vendor(
+        name=VendorName.RELEASEHUB,
+        env=EnvExists("RELEASE_BUILD_ID"),
+    ),
+    Vendor(
+        name=VendorName.SOURCEHUT,
+        env=EnvEqual("CI_NAME", "sourcehut"),
+    ),
 ]

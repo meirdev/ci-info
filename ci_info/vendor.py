@@ -49,6 +49,8 @@ class VendorName(str, enum.Enum):
     HEROKU = "Heroku"
     GOOGLE_CLOUD_BUILD = "Google Cloud Build"
     GERRIT = "Gerrit"
+    RELEASEHUB = "ReleaseHub"
+    SOURCEHUT = "Sourcehut"
 
 
 class Vendor(NamedTuple):
